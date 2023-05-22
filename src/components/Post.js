@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchComments} from '../redux/actions/postActions';
 import Comment from './Comment';
-import { fetchComments } from '../redux/actions/postActions';
-import { useDispatch, useSelector } from 'react-redux';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
-const Post = ({ title, body, author, postId }) => {
+const Post = ({title, body, author, postId}) => {
     const dispatch = useDispatch();
     const [showComments, setShowComments] = useState(false);
-    const comments = useSelector((state) => state.comments[postId] || []); // Получение комментариев для текущего поста
+    const comments = useSelector((state) => state.comments[postId] || []);
 
     const handleCommentsClick = () => {
         setShowComments(!showComments);
@@ -14,20 +16,23 @@ const Post = ({ title, body, author, postId }) => {
             dispatch(fetchComments(postId));
         }
     };
-    return (
-        <div className="post">
-            <div className="post-title">{title}</div>
-            <div className="post-text">{body}</div>
-            <img className="post-author" src={author} alt="Author" />
-            <div onClick={handleCommentsClick}>
-                {showComments ? 'Hide Comments' : 'Show Comments'}
-            </div>
 
-            {showComments &&
-                comments.map((comment) => (
-                    <Comment key={comment.id} email={comment.email} text={comment.body} />
-                ))}
-        </div>
+    return (
+        <Card className="post">
+            <Card.Title className="post-title">{title}</Card.Title>
+            <Card.Text className="post-text">{body}</Card.Text>
+            <Card.Img className="post-author" src={author} alt="Author"/>
+            <Button onClick={handleCommentsClick} variant="primary">
+                {showComments ? 'Hide Comments' : 'Show Comments'}
+            </Button>
+
+            <div className="comments">
+                {showComments &&
+                    comments.map((comment) => (
+                        <Comment key={comment.id} email={comment.email} body={comment.body}/>
+                    ))}
+            </div>
+        </Card>
     );
 };
 

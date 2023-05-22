@@ -13,26 +13,9 @@ const PostList = () => {
     }, [dispatch]);
 
 
-
     return (
-        <div>
+        <div className="posts">
             <h1>Posts</h1>
-            {/*{posts.map((post) => (*/}
-            {/*    <div key={post.id}>*/}
-            {/*        <h3>{post.title}</h3>*/}
-            {/*        <p>{post.body}</p>*/}
-            {/*        <button onClick={() => handleCommentsClick(post.id)}>Show Comments</button>*/}
-            {/*        {comments[post.id] && (*/}
-            {/*            <ul>*/}
-            {/*                {comments[post.id].map((comment) => (*/}
-            {/*                    <li key={comment.id}>*/}
-            {/*                        <strong>{comment.name}</strong>: {comment.body}*/}
-            {/*                    </li>*/}
-            {/*                ))}*/}
-            {/*            </ul>*/}
-            {/*        )}*/}
-            {/*    </div>*/}
-            {/*))}*/}
             {posts.map((post) => (
                 <Post key={post.id} postId={post.id} title={post.title} body={post.body}
                       author="./"/>

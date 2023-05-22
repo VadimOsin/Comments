@@ -1,0 +1,40 @@
+.card {
+    border: 1px black solid;
+}
+
+.post, .card {
+    margin: 1rem;
+}
+
+.comments, .posts {
+    margin: 0 auto;
+}
+
+.posts {
+    width: 70vw;
+}
+
+.collapse {
+    align-items: flex-start;
+}
+
+.header-info {
+    margin-left: 1rem;
+    color: gray;
+}
+
+.header-user {
+    display: flex;
+}
+
+.header-name:hover, .header-email:hover {
+    cursor: pointer;
+    color: white;
+    transition: 1s;
+}
+
+.header-avatar:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: 1s;
+}

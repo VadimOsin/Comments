@@ -1,11 +1,14 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 
-const Comment = ({ email, body }) => {
+const Comment = ({email, body}) => {
     return (
-        <div className="comment">
-            <div className="comment-email">{email}</div>
-            <div className="comment-text">{body}</div>
-        </div>
+        <Card.Body className="card">
+            <Card.Title>{email}</Card.Title>
+            <Card.Text>
+                {body}
+            </Card.Text>
+        </Card.Body>
     );
 };
 
