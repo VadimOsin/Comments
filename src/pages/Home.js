@@ -4,8 +4,7 @@ import PostList from "../components/PostList";
 const Home = () => {
     return (
         <div>
-            {/*<Header avatar={"./utils/img/avatars.jpg"} email={"fefjskfsdf"} name={"kfvsnfls"}/>*/}
-            <PostList />
+            <PostList/>
         </div>
     );
 };
