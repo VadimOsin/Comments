@@ -1,15 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from 'react-bootstrap/Card';
+import Loader from "../components/Loader";
 
 const About = () => {
     const portfolioUrl = 'https://github.com/VadimOsin/';
     const portfolioGitUrl = 'https://github.com/VadimOsin/';
     const email = 'lljytnik@gmail.com';
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(!loading)
+        }, 500)
+    }, []);
+    if (loading) {
+        return <Loader/>
+    }
     return (
         <Card className="about">
             <Card.Body>
                 <Card.Title>Обо мне</Card.Title>
-                <div> {/* Исправлено здесь */}
+                <div>
                     <Card.Text>
                         Я - разработчик React с опытом работы в веб-разработке. Я увлечен созданием интерактивных и
                         отзывчивых пользовательских интерфейсов с использованием современных технологий.
