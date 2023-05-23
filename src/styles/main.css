@@ -39,8 +39,13 @@
     scale: 1.1;
     transition: 1s;
 }
-.post-author{
+
+.post-author {
     width: 30px;
     height: 30px;
     margin: 1rem;
+}
+
+.navigate:hover {
+    cursor: pointer;
 }

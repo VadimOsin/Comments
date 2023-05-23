@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchPosts} from '../redux/actions/postActions';
+import {fetchPosts} from '../redux/actions/Actions';
 import Post from "./Post";
 import avatar from '../img/avatars.jpg'
 
@@ -12,7 +12,6 @@ const PostList = () => {
     useEffect(() => {
         dispatch(fetchPosts());
     }, [dispatch]);
-
     return (
         <div className="posts">
             <h1>Posts</h1>

@@ -1,9 +1,15 @@
-import {FETCH_POSTS_SUCCESS, FETCH_COMMENTS_SUCCESS, FETCH_USER} from '../actions/postActions';
+import {
+    FETCH_POSTS_SUCCESS,
+    FETCH_COMMENTS_SUCCESS,
+    FETCH_USER,
+    FETCH_USER_POSTS_SUCCESS
+} from '../actions/Actions';
 
 const initialState = {
     posts: [],
     comments: {},
-    user: null
+    user: null,
+    userPosts: {}
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -25,6 +31,14 @@ const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: action.payload,
+            };
+        case FETCH_USER_POSTS_SUCCESS:
+            return {
+                ...state,
+                userPosts: {
+                    ...state.userPosts,
+                    [action.payload.userId]: action.payload,
+                },
             };
         default:
             return state;
