@@ -2,6 +2,7 @@ import React from 'react';
 import Card from 'react-bootstrap/Card';
 
 const Comment = ({email, body}) => {
+
     return (
         <Card.Body className="card">
             <Card.Title>{email}</Card.Title>

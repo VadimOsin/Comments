@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {fetchComments, fetchUser} from '../redux/actions/Actions';
+import {fetchComments} from '../redux/actions/Actions';
 import Comment from './Comment';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
@@ -20,6 +20,7 @@ const Post = ({title, body, author, id, userId}) => {
     useEffect(() => {
         if (showComments && comments.length === 0) {
             dispatch(fetchComments(id));
+
         }
     }, [showComments, comments.length, dispatch, id]);
 

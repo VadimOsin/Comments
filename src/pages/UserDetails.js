@@ -1,24 +1,30 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
 import {fetchUser, fetchUserPosts} from "../redux/actions/Actions";
 import {useDispatch, useSelector} from "react-redux";
 import Card from "react-bootstrap/Card";
 import avatar from '../img/avatars.jpg';
 import Post from "../components/Post";
+import Loader from "../components/Loader";
 
 const UserDetails = () => {
     const {id} = useParams();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user);
     const userPosts = useSelector((state) => state?.userPosts[id]?.posts || []);
-
+    const [loading, setLoading] = useState(true)
     useEffect(() => {
-        if (id) {
-            dispatch(fetchUser(id));
-            dispatch(fetchUserPosts(id));
-        }
+        setTimeout(() => {
+            if (id) {
+                dispatch(fetchUser(id));
+                dispatch(fetchUserPosts(id));
+                setLoading(!loading)
+            }
+        }, 500)
     }, [id, dispatch]);
-    console.log(userPosts)
+    if (loading) {
+        return <Loader/>
+    }
     return (
         <>
             <div className="d-flex justify-content-center">
