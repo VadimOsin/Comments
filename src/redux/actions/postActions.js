@@ -4,6 +4,14 @@ export const FETCH_POSTS_SUCCESS = 'FETCH_POSTS_SUCCESS';
 export const FETCH_COMMENTS = 'FETCH_COMMENTS';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
 
+export const FETCH_USER = 'FETCH_USER';
+
+export const fetchUser = (userId) => ({
+    type: FETCH_USER,
+    payload: userId
+});
+
+
 export const fetchPosts = () => ({
     type: FETCH_POSTS,
 });
@@ -22,3 +30,5 @@ export const fetchCommentsSuccess = (comments) => ({
     type: FETCH_COMMENTS_SUCCESS,
     payload: comments,
 });
+
+
